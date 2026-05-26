@@ -1,40 +1,71 @@
 import React, { useState } from 'react'
 import Submit from "./Submit"
-const App = () => {
-  let [count, SetCount] = useState(0)
-  let [bgcolor, SetColor] = useState("black")
-  function green() {
-    SetColor("green")
-  } 
-  function pink() {
-    SetColor("pink")
-  } 
-  function blue() {
-    SetColor("blue")
-  } 
-  function yellow() {
-    SetColor("yellow")
-  }
-  function inc() {
-    SetCount(count + 1)
-  }
-  function dec() {
-    SetCount(count - 1)
-  }
-  return (
-    <div style={{ backgroundColor: bgcolor, height: "100vh" }}>
-      <h3>{count}</h3>
+import New from './New'
+// import { About } from './New'
+
+// let [count, SetCount] = useState(0)
+// let [bgcolor, SetColor] = useState("black")
+// function green() {
+//   SetColor("green")
+// } 
+// function pink() {
+//   SetColor("pink")
+// } 
+// function blue() {
+//   SetColor("blue")
+// } 
+// function yellow() {
+//   SetColor("yellow")
+// }
+// function inc() {
+//   SetCount(count + 1)
+// }
+// function dec() {
+//   SetCount(count - 1)
+// }
+
+{/* <h3>{count}</h3>
       <button onClick={dec}>Decrement</button>
       <button onClick={inc}>Increment</button>
       <br />
       <button onClick={green}>Green</button>
       <button onClick={blue}>Blue</button>
       <button onClick={pink}>Pink</button>
-      <button onClick={yellow}>Yellow</button>
-      <Home/>
-      <About/>
-      <Contact/>
-      <Submit/>
+      <button onClick={yellow}>Yellow</button> */} const App = () => {
+  let data = "hello"
+  let [count, SetCount] = useState(0)
+  let [time,SetTime]=useState(0)
+  function inc() {
+    SetCount(count + 1)
+  }
+  function dec() {
+    SetCount(count - 1)
+  }
+  function state(val){
+    if(val=="start"){
+    setInterval(() => {
+                SetTime((time) => time + 10);
+            }, 10);
+  }else{
+    return
+  }
+}
+  function stop(){
+    return
+  }
+  return (
+    <div>
+      <h3>{count}</h3>
+      <button onClick={dec}>Decrement</button>
+      <button onClick={inc}>Increment</button>
+      <h3>{time}</h3>
+      <button onClick={state(start)}>Start</button>
+      <button onClick={state}>Stop</button>
+      <Home />
+      {/* <New a={data} /> */}
+      {/* <About/> */}
+      <Contact />
+      <Submit />
     </div>
   )
 }
@@ -45,11 +76,11 @@ export const Home = () => {
   )
 }
 
-export const About = () => {
-  return (
-    <div>About</div>
-  )
-}
+// export const About = () => {
+//   return (
+//     <div>About</div>
+//   )
+// }
 
 export const Contact = () => {
   return (
