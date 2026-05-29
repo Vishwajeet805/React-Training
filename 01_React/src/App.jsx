@@ -96,7 +96,7 @@
 //   const [title, setTitle] = useState(" ")
 //   const [text, setText] = useState(" ")
 //   function fun(e){
-    
+
 //     setTitle(e.target.value)
 //   }
 //   function dta(){
@@ -111,15 +111,81 @@
 //     <button onClick={dta}>Click Me</button>
 //     </div>
 //   )
+// // }
+
+// // export default App
+
+// import React from 'react'
+// import Form from './Form'
+// const App = () => {
+//   return (
+//     <div><Form/></div>
+//   )
 // }
 
 // export default App
 
-import React from 'react'
-import Form from './Form'
+import React, { useEffect } from 'react'
+import { useState } from 'react'
+
 const App = () => {
+  const [count, setCount] = useState(0)
+  const [city, setcity] = useState("Delhi")
+  const [data, setData] = useState([])
+
+
+  useEffect(() => {
+    console.log("hello");
+    async function api() {
+      let res = await fetch(`https://jsonplaceholder.typicode.com/users`)
+      let data = await res.json()
+      console.log(data[0])
+      setData(data)
+
+    }
+    api()
+  }, [count])
+
+
+  useEffect(() => {
+    console.log(city);
+    // async function api() {
+    //   let res = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+    //   let data = await res.json()
+    //   console.log(data)
+    //   setData(data)
+
+    // }
+    // api()
+  }, [city])
+
+
   return (
-    <div><Form/></div>
+    <div class="Main">
+      {/* <h1>{count}</h1> */}
+      {/* <button onClick={() => setCount(count + 1)}>Click </button> */}
+      {/* <br />
+      <br /> */}
+      {/* <h2>{city}</h2> */}
+      {/* <button onClick={() => { setcity("Jabalpur") }}>Change</button> */}
+      {/* <br />
+      <br />{ */}{
+        data.map((a) => {
+          return (<>
+          <div class="card">
+            <h2>Id : {a.id}</h2>
+            <h2>Name : {a.name}</h2>
+            <h2>Username : {a.username}</h2>
+            <h2>Email : {a.email}</h2>
+            <h2>Phone : {a.phone}</h2>
+            <h2>Company : {a.company.name}</h2>
+            <br />
+          </div>
+          </>)
+        })}
+      {/* <h2>Company : {a.company.me}</h2> */}
+
+    </div>
   )
 }
 
