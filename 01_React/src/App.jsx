@@ -149,27 +149,28 @@ const App = () => {
 
   useEffect(() => {
     console.log(city);
-    // async function api() {
-    //   let res = await fetch('https://jsonplaceholder.typicode.com/todos/1')
-    //   let data = await res.json()
-    //   console.log(data)
-    //   setData(data)
+    async function api() {
+      let res = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+      let data = await res.json()
+      console.log(data)
+      setData(data)
 
-    // }
-    // api()
+    }
+    api()
   }, [city])
 
 
   return (
     <div class="Main">
-      {/* <h1>{count}</h1> */}
-      {/* <button onClick={() => setCount(count + 1)}>Click </button> */}
-      {/* <br />
-      <br /> */}
-      {/* <h2>{city}</h2> */}
-      {/* <button onClick={() => { setcity("Jabalpur") }}>Change</button> */}
-      {/* <br />
-      <br />{ */}{
+      <h1>{count}</h1>
+      <button onClick={() => setCount(count + 1)}>Click </button>
+      <br />
+      <br />
+      <h2>{city}</h2>
+      <button onClick={() => { setcity("Jabalpur") }}>Change</button>
+      <br />
+      <br />
+      {
         data.map((a) => {
           return (<>
           <div class="card">
