@@ -66,3 +66,10 @@ li {
   height: fit-content;
   border-radius: 10px;
 }
+.card button{
+   padding: 5px;
+  margin: 5px;
+  background-color: snow;
+  color: black;
+  border-radius: 10px;
+}

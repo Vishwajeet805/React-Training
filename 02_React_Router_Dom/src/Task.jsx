@@ -22,32 +22,38 @@ const Task = () => {
         setProduct(data.products);
       });
   }, []);
-  function priceHigh() {
-    let sortdata = [...product].sort((a, b) => {
-      console.log(a, b)
-      return a.price - b.price
-    })
-    setProduct(sortdata)
-  }
   function priceLow() {
     let sortdata = [...product].sort((a, b) => {
-      return b.price - a.price
+      console.log(a, b)
+      return a.price - b.price
     })
     setProduct(sortdata)
   }
-  function rateHigh() {
+  function priceHigh() {
     let sortdata = [...product].sort((a, b) => {
-      console.log(a, b)
-      return a.price - b.price
+      return b.price - a.price
     })
     setProduct(sortdata)
   }
   function rateLow() {
     let sortdata = [...product].sort((a, b) => {
-      return b.price - a.price
+      console.log(a, b)
+      return a.rating - b.rating
     })
     setProduct(sortdata)
   }
+  function rateHigh() {
+    let sortdata = [...product].sort((a, b) => {
+      return b.rating - a.rating
+    })
+    setProduct(sortdata)
+  }
+   function deleteItem(idx){
+    const prev=[...product]
+    prev.splice(idx,1)
+    setProduct(prev)
+  }
+
   console.log(product);
   return (
     <div>
@@ -70,7 +76,7 @@ const Task = () => {
         </div>
       </div>
       <div class="carde">
-        {product.map((a) => (
+        {product.map((a,idx) => (
           <div
             key={a.id}
             class="card"
@@ -85,6 +91,9 @@ const Task = () => {
             <h2>Brand : {a.brand}</h2>
             <h2>Price : ₹{a.price}</h2>
             <h2>Rating : ⭐ {a.rating}</h2>
+            <button onClick={() => {
+                deleteItem(idx)
+              }}>Delete</button>
           </div>
         ))}
       </div>
