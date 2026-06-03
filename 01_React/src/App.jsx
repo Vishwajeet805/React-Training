@@ -170,20 +170,7 @@ const App = () => {
       <button onClick={() => { setcity("Jabalpur") }}>Change</button>
       <br />
       <br />
-      {
-        data.map((a) => {
-          return (<>
-          <div class="card">
-            <h2>Id : {a.id}</h2>
-            <h2>Name : {a.name}</h2>
-            <h2>Username : {a.username}</h2>
-            <h2>Email : {a.email}</h2>
-            <h2>Phone : {a.phone}</h2>
-            <h2>Company : {a.company.name}</h2>
-            <br />
-          </div>
-          </>)
-        })}
+      
       {/* <h2>Company : {a.company.me}</h2> */}
 
     </div>
