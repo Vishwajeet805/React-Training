@@ -2,16 +2,78 @@
   margin: 0;
   padding: 0;
 }
-#nav {
-  background-color: black;
+
+.Main{
+  /* background-color: rgb(5, 22, 32); */
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   padding: 1rem;
+  
 }
-li {
+.Main div{
+  /* background-color: rgb(5, 22, 32); */
+  display: flex;
+  /* flex-direction: column; */
+  gap:10px;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+  
+}
+button{
+   padding: 5px;
+  margin: 5px;
+  background-color: rgb(25, 36, 185);
+  color: snow;
+  border-radius: 10px;
+}
+input{
+   padding: 5px;
+  margin: 5px;
+  background-color: snow;
+  color: black;
+  border-radius: 10px;
+}
+#green{
+  background-color: green;
+  
+}
+#red{
+  background-color: red;
+
+}
+h2{
+  text-align: center;
+  font-size: 2rem;
+}
+.Field{
+  height: fit-content;
+  width: 90vw;
+  background-color: beige;
+  color: black;
+  border-radius: 20px;
+  margin: 10px;
+}
+h3{
+  border:1px solid grey;
+  width:100%;
+  padding: 5px;
+  border-radius: 15px;
+
+}
+/* li {
   color: snow;
 }
+/* h2{
+  text-align: center;
+  font-size: 2rem;
+}
+h2{
+  text-align: center;
+  font-size: 2rem;
+} *//*
 .Head div button {
   padding: 5px;
   margin: 5px;
@@ -72,4 +134,11 @@ li {
   background-color: snow;
   color: black;
   border-radius: 10px;
-}
+}*/
+/* #nav {
+  background-color: black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+} */ 
