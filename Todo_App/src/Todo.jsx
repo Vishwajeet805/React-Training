@@ -34,7 +34,9 @@ const Todo = () => {
                     return (<div class="Field">
                         <h3>{a}</h3>
                         <div>
-                            <button id="green">Edit</button>
+                            <button id="green"  onClick={()=> {
+                                              editTodo(idx)
+                                  }}>Edit</button>
                             <button id="red"  onClick={()=> {
                                               deleteTodo(idx)
                                   }}>Delete</button>
