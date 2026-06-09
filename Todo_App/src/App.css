@@ -239,6 +239,8 @@ h2{
   color: black;
   border-radius: 20px;
   margin: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 h3{
   border:1px solid grey;
