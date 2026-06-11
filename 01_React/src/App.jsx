@@ -125,55 +125,93 @@
 
 // export default App
 
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+// import React, { useEffect } from 'react'
+// import { useState } from 'react'
+
+// const App = () => {
+//   const [count, setCount] = useState(0)
+//   const [city, setcity] = useState("Delhi")
+//   const [data, setData] = useState([])
+
+
+//   useEffect(() => {
+//     console.log("hello");
+//     async function api() {
+//       let res = await fetch(`https://jsonplaceholder.typicode.com/users`)
+//       let data = await res.json()
+//       console.log(data[0])
+//       setData(data)
+
+//     }
+//     api()
+//   }, [count])
+
+
+//   useEffect(() => {
+//     console.log(city);
+//     async function api() {
+//       let res = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+//       let data = await res.json()
+//       console.log(data)
+//       setData(data)
+
+//     }
+//     api()
+//   }, [city])
+
+
+//   return (
+//     <div class="Main">
+//       <h1>{count}</h1>
+//       <button onClick={() => setCount(count + 1)}>Click </button>
+//       <br />
+//       <br />
+//       <h2>{city}</h2>
+//       <button onClick={() => { setcity("Jabalpur") }}>Change</button>
+//       <br />
+//       <br />
+
+//       {/* <h2>Company : {a.company.me}</h2> */}
+
+//     </div>
+//   )
+// }
+
+// export default App
+
+import React, { Children, useMemo } from 'react'
+import useCounter from './Counter'
 
 const App = () => {
-  const [count, setCount] = useState(0)
-  const [city, setcity] = useState("Delhi")
-  const [data, setData] = useState([])
-
-
-  useEffect(() => {
-    console.log("hello");
-    async function api() {
-      let res = await fetch(`https://jsonplaceholder.typicode.com/users`)
-      let data = await res.json()
-      console.log(data[0])
-      setData(data)
-
+  let { count, inc, dec, reset } = useCounter(0)
+  // function call(){
+  //   let res=0
+  //   for (let i=0;i<100000000;i++){
+  //     res+=i;
+  //   }
+  //   return res
+  // }
+  let total = useMemo(() => {
+    let res = 0
+    for (let i = 0; i < 100000000; i++) {
+      res += i;
     }
-    api()
-  }, [count])
-
-
-  useEffect(() => {
-    console.log(city);
-    async function api() {
-      let res = await fetch('https://jsonplaceholder.typicode.com/todos/1')
-      let data = await res.json()
-      console.log(data)
-      setData(data)
-
-    }
-    api()
-  }, [city])
-
-
-  return (
-    <div class="Main">
-      <h1>{count}</h1>
-      <button onClick={() => setCount(count + 1)}>Click </button>
-      <br />
-      <br />
-      <h2>{city}</h2>
-      <button onClick={() => { setcity("Jabalpur") }}>Change</button>
-      <br />
-      <br />
-      
-      {/* <h2>Company : {a.company.me}</h2> */}
-
+    return res
+  }, [])
+  return(
+    <div>
+      <h2>{count}</h2>
+      <h3>{total}</h3>
+      <button onClick={inc}>Increase</button>
+      <button onClick={dec}>Decrease</button>
+      <button onClick={reset}>Reset</button>
+      <Child />
     </div>
+  )
+}
+let Child = () => {
+  return (
+    <div>App</div>
   )
 }
 
