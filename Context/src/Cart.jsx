@@ -1,15 +1,14 @@
 import React from 'react'
 import './App.css'
-const Cart = ({cart,SetCart}) => {
-    function deleteItem(idx){
-    const prev=[...cart]
-    prev.splice(idx,1)
-    SetCart(prev)
-  }
+import { useContext } from 'react'
+import Con from './Context';
+const Cart = () => {
+  let { state, dispatch } = useContext(Con)
+      console.log(state, "statetetetetetet");
+
   return (
     <div class="carde">
-          {
-        cart.map((a,idx)=>{
+        {state.cart.map((a,idx)=>{
           return(<div
             key={a.id}
             class="card"
@@ -24,7 +23,7 @@ const Cart = ({cart,SetCart}) => {
             <h2>Brand : {a.brand}</h2>
             <h2>Price : ₹{a.price}</h2>
             <h2>Rating : ⭐ {a.rating}</h2>
-            <button onClick={()=>deleteItem(idx)}>Remove</button>
+            
           </div>)
         })
       }
