@@ -179,37 +179,101 @@
 
 // export default App
 
-import React, { Children, useMemo } from 'react'
-import useCounter from './Counter'
+// import React, { Children, useMemo } from 'react'
+// import useCounter from './Counter'
+
+// const App = () => {
+//   let { count, inc, dec, reset } = useCounter(0)
+//   // function call(){
+//   //   let res=0
+//   //   for (let i=0;i<100000000;i++){
+//   //     res+=i;
+//   //   }
+//   //   return res
+//   // }
+//   let total = useMemo(() => {
+//     let res = 0
+//     for (let i = 0; i < 100000000; i++) {
+//       res += i;
+//     }
+//     return res
+//   }, [])
+//   return(
+//     <div>
+//       <h2>{count}</h2>
+//       <h3>{total}</h3>
+//       <button onClick={inc}>Increase</button>
+//       <button onClick={dec}>Decrease</button>
+//       <button onClick={reset}>Reset</button>
+//       <Child />
+//     </div>
+//   )
+// }
+// let Child = () => {
+//   return (
+//     <div>App</div>
+//   )
+// }
+
+// export default App
+
+import React from 'react'
 
 const App = () => {
-  let { count, inc, dec, reset } = useCounter(0)
-  // function call(){
-  //   let res=0
-  //   for (let i=0;i<100000000;i++){
-  //     res+=i;
-  //   }
-  //   return res
-  // }
-  let total = useMemo(() => {
-    let res = 0
-    for (let i = 0; i < 100000000; i++) {
-      res += i;
+
+  Array.prototype.mapp=function(cb){
+    let res=[]
+    for (let i=0;i<this.length;i++)   {
+      res.push(cb(this[i],i,this))
+    } 
+      return res
+  }
+  Array.prototype.myFilter=function(cb){
+    let res=[]
+    for (let i=0;i<this.length;i++)   {
+
+      if(cb(this[i],i,this)){
+        res.push(this[i])
+      }
+    } 
+      return res
+  }
+   Array.prototype.myEach=function(cb){
+    for (let i=0;i<this.length;i++)   {
+
+      cb(this[i],i,this)
+    } 
+  }
+  Array.prototype.myReduce=function(cb,a=0){
+    let res=a
+    for (let i=0;i<this.length;i++)   {
+
+      res=cb(res,this[i])
     }
     return res
-  }, [])
-  return(
-    <div>
-      <h2>{count}</h2>
-      <h3>{total}</h3>
-      <button onClick={inc}>Increase</button>
-      <button onClick={dec}>Decrease</button>
-      <button onClick={reset}>Reset</button>
-      <Child />
-    </div>
-  )
-}
-let Child = () => {
+  }
+
+  let list=[1,2,3,4,5]
+  // let data=list.mapp(function(a,b,c){
+  //   return a
+  // })
+  // let data1=list.myFilter(function(a,b,c){
+  //   return a>2
+  // })
+  // let data2=list.myEach(function(a,b,c){
+  //   console.log(`${a}`)
+  // })
+  let data1=list.reduce(function(a,b){
+    return a*b
+  })
+let data2=list.myReduce(function(a,b){
+    return a*b
+  })
+
+
+  console.log(data1);
+  console.log(data2);
+  
   return (
     <div>App</div>
   )
