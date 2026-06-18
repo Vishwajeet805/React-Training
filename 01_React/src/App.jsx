@@ -1,3 +1,54 @@
+import React, { useState } from 'react'
+import {GoogleGenerativeAI} from '@google/generative-ai'
+
+const App = () => {
+  const [Searchdata, setSearchdata] = useState("")
+  let genAi= new GoogleGenerativeAI("AQ.Ab8RN6Js4vVqp841hkVj49kBj_BC0oDuDyybSseq-Y2hIZzzkg")
+  async function search() {
+    try{
+      let model=genAi.getGenerativeModel({
+        model:"gemini-2.5-flash"
+      })
+      let res= await model.generateContent(Searchdata)
+      console.log(res.response.text())
+      
+    }
+    catch(err){
+      console.log(err)
+    }
+  }
+  return (
+    <div className='flex flex-col gap-9 h-screen justify-center items-center'>
+      <h1>Gemini API Integration</h1>
+      <div className='flex flex-col gap-3 justify-evenly items-center w-100'>
+        <input className="bg-white text-black w-[90%] rounded-xl p-10px "type="text" name="" id="" onChange={(e)=>{
+        setSearchdata(e.target.value)
+        } } />
+        <button className="bg-green-400 text-white rounded-xl p-10px " onClick={search}>Search</button>
+      </div>
+      <textarea  className="bg-white text-black "name="" id="text">
+        
+
+      </textarea>
+    </div>
+  )
+}
+
+export default App
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import React, { useState } from 'react'
 // import Submit from "./Submit"
 // import New from './New'
@@ -217,66 +268,66 @@
 
 // export default App
 
-import React from 'react'
+// import React from 'react'
 
-const App = () => {
+// const App = () => {
 
-  Array.prototype.mapp=function(cb){
-    let res=[]
-    for (let i=0;i<this.length;i++)   {
-      res.push(cb(this[i],i,this))
-    } 
-      return res
-  }
-  Array.prototype.myFilter=function(cb){
-    let res=[]
-    for (let i=0;i<this.length;i++)   {
+//   Array.prototype.mapp=function(cb){
+//     let res=[]
+//     for (let i=0;i<this.length;i++)   {
+//       res.push(cb(this[i],i,this))
+//     } 
+//       return res
+//   }
+//   Array.prototype.myFilter=function(cb){
+//     let res=[]
+//     for (let i=0;i<this.length;i++)   {
 
-      if(cb(this[i],i,this)){
-        res.push(this[i])
-      }
-    } 
-      return res
-  }
-   Array.prototype.myEach=function(cb){
-    for (let i=0;i<this.length;i++)   {
+//       if(cb(this[i],i,this)){
+//         res.push(this[i])
+//       }
+//     } 
+//       return res
+//   }
+//    Array.prototype.myEach=function(cb){
+//     for (let i=0;i<this.length;i++)   {
 
-      cb(this[i],i,this)
-    } 
-  }
-  Array.prototype.myReduce=function(cb,a=0){
-    let res=a
-    for (let i=0;i<this.length;i++)   {
+//       cb(this[i],i,this)
+//     } 
+//   }
+//   Array.prototype.myReduce=function(cb,a=0){
+//     let res=a
+//     for (let i=0;i<this.length;i++)   {
 
-      res=cb(res,this[i])
-    }
-    return res
-  }
+//       res=cb(res,this[i])
+//     }
+//     return res
+//   }
 
-  let list=[1,2,3,4,5]
-  // let data=list.mapp(function(a,b,c){
-  //   return a
-  // })
-  // let data1=list.myFilter(function(a,b,c){
-  //   return a>2
-  // })
-  // let data2=list.myEach(function(a,b,c){
-  //   console.log(`${a}`)
-  // })
-  let data1=list.reduce(function(a,b){
-    return a*b
-  })
-let data2=list.myReduce(function(a,b){
-    return a*b
-  })
+//   let list=[1,2,3,4,5]
+//   // let data=list.mapp(function(a,b,c){
+//   //   return a
+//   // })
+//   // let data1=list.myFilter(function(a,b,c){
+//   //   return a>2
+//   // })
+//   // let data2=list.myEach(function(a,b,c){
+//   //   console.log(`${a}`)
+//   // })
+//   let data1=list.reduce(function(a,b){
+//     return a*b
+//   })
+// let data2=list.myReduce(function(a,b){
+//     return a*b
+//   })
 
 
-  console.log(data1);
-  console.log(data2);
+//   console.log(data1);
+//   console.log(data2);
   
-  return (
-    <div>App</div>
-  )
-}
+//   return (
+//     <div>App</div>
+//   )
+// }
 
-export default App
+// export default App
