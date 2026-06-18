@@ -3,7 +3,7 @@ import {GoogleGenerativeAI} from '@google/generative-ai'
 
 const App = () => {
   const [Searchdata, setSearchdata] = useState("")
-  let genAi= new GoogleGenerativeAI("AQ.Ab8RN6Js4vVqp841hkVj49kBj_BC0oDuDyybSseq-Y2hIZzzkg")
+  let genAi= new GoogleGenerativeAI("API KEY")
   async function search() {
     try{
       let model=genAi.getGenerativeModel({
